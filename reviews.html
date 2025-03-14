@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="logo2.png">
+    <title>Customer Reviews</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<style>
+    .rating-section {
+        max-width: 85%;
+        margin: 20px auto;
+        padding: 20px;
+        border-radius: 10px;
+    }
+
+    .testimonials-section {
+        max-width: 80%;
+        margin: 20px auto;
+        padding: 20px;
+        border-radius: 10px;
+        margin-bottom: 100px;
+    }
+
+    .more-reviews-section {
+        max-width: 90%;
+        margin: 20px auto;
+        padding: 20px;
+        border-radius: 10px;
+    }
+
+    .rating {
+        text-align: left;
+        font-size: 25px;
+        margin-bottom: 10px;
+        border-bottom: 3px burlywood;
+    }
+    .stars {
+        color: gold;
+    }
+    .rating-bar {
+        display: flex;
+        align-items: center;
+        margin: 5px 0;
+    }
+    .bar {
+        height: 20px;
+        background: lightseagreen;
+        width: 70%;
+        margin-left: 10px;
+        border-radius: 9px;
+        margin-bottom: 25px;
+    }
+
+    .testimonials-section h2 {
+        text-align: center;
+        margin-bottom: 50px;
+    }
+
+    .testimonials {
+        display: flex;
+        gap: 35px;
+        justify-content: center;
+    }
+    .testimonial {
+        background: #fff;
+        padding: 15px;
+        border-radius: 15px;
+        box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+        width: 30%;
+        text-align: center;
+        transition: transform 0.3s, background-color 0.3s;
+    }
+    .testimonial:hover {
+        transform: translateY(-9px);
+        box-shadow: 0 0 20px rgb(163, 128, 83);
+    }
+    .testimonial img {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        margin-bottom: 10px;
+    }
+    .review {
+        background: #fff;
+        padding: 10px;
+        border-radius: 5px;
+        margin-bottom: 10px;
+        box-shadow: 0 0 3px rgba(0, 0, 0, 0.1);
+    }
+    .more-reviews-section h2 {
+        text-align: center;
+        margin-bottom: 55px;
+    }
+    .separator {
+        border: none;
+        height: 6px;
+        background-color: gray;
+        margin: 10px 0;
+        width: 100%;
+        border-radius: 30px;
+        margin-bottom: 20px;
+    }
+    .testimonials-section h2,
+    .more-reviews-section h2 {
+        position: relative;
+        padding-bottom: 10px;
+    }
+
+    .testimonials-section h2::after,
+    .more-reviews-section h2::after {
+        content: "";
+        display: block;
+        width: 60px; /* Adjust length of the underline */
+        height: 4px;  /* Adjust thickness */
+        background-color: burlywood; /* Adjust underline color */
+        margin: 8px auto 0;
+        border-radius: 5px;
+    }
+
+    .more-reviews-section .reviews-container {
+        display: flex;
+        gap: 35px;
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+
+    .more-reviews-section .review {
+        width: 30%;
+        text-align: center;
+        background: #fff;
+        padding: 15px;
+        border-radius: 5px;
+        box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s, background-color 0.3s;
+    }
+
+    .more-reviews-section .review:hover {
+        box-shadow: 0 0 20px rgb(163, 128, 83);
+    }
+
+    /* RESPONSIVENESS */
+
+/* Large Screens (max-width: 1200px) */
+@media (max-width: 1200px) {
+    .testimonials, .more-reviews-section .reviews-container {
+        gap: 25px;
+    }
+    
+    .testimonial, .more-reviews-section .review {
+        width: 45%;
+    }
+
+    .rating {
+        font-size: 22px;
+    }
+}
+
+/* Tablets (max-width: 900px) */
+@media (max-width: 900px) {
+    .testimonials, .more-reviews-section .reviews-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .testimonial, .more-reviews-section .review {
+        width: 80%;
+    }
+
+    .rating-section, .testimonials-section, .more-reviews-section {
+        max-width: 90%;
+    }
+
+    .rating {
+        font-size: 20px;
+    }
+
+    .bar {
+        height: 15px;
+    }
+
+    .testimonials-section h2,
+    .more-reviews-section h2 {
+        font-size: 1.5rem;
+    }
+}
+
+/* Mobile Screens (max-width: 600px) */
+@media (max-width: 600px) {
+    .rating-section, .testimonials-section, .more-reviews-section {
+        max-width: 95%;
+        padding: 15px;
+    }
+
+    .testimonial, .more-reviews-section .review {
+        width: 95%;
+        padding: 12px;
+    }
+
+    .rating {
+        font-size: 18px;
+    }
+
+    .bar {
+        height: 12px;
+        width: 60%;
+    }
+
+    .testimonials-section h2,
+    .more-reviews-section h2 {
+        font-size: 1.3rem;
+    }
+}
+
+/* Small Phones (max-width: 400px) */
+@media (max-width: 400px) {
+    .rating-section, .testimonials-section, .more-reviews-section {
+        padding: 10px;
+    }
+
+    .testimonial, .more-reviews-section .review {
+        width: 100%;
+        padding: 10px;
+    }
+
+    .rating {
+        font-size: 16px;
+    }
+
+    .bar {
+        height: 10px;
+        width: 50%;
+    }
+
+    .testimonials-section h2,
+    .more-reviews-section h2 {
+        font-size: 1.2rem;
+    }
+}
+</style>
+
+<body>
+    <nav id="navbar">
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li class="dropdown">
+                <a href="#collection" class="dropbtn">Collections</a>
+                <ul class="dropdown-content">
+                    <li><a href="herskinstore.html">HerSkin</a></li>
+                    <li><a href="adornstore.html">Adorn</a></li>
+                    <li><a href="fairyskinstore.html">FairySkin</a></li>
+                </ul>
+            </li>
+            <li><a href="store.html">Store</a></li>
+            <li><a href="#">Reviews</a></li>
+            <li><a href="ordernow.html">Order Now</a></li>
+            <li><a href="about.html">About</a></li>
+        </ul>
+        
+        <div class="logo">
+            <a href="index.html">
+                <img src="logo4.png" alt="Logo">
+            </a>
+        </div>
+    </nav>
+
+    <div class="rating-section">
+        <div class="rating">
+            <strong>User Rating</strong> <span class="stars">★★★★★</span>
+            <p>4.7 average based on 12k reviews</p>
+        <hr class="separator">
+        </div>
+        <div class="rating-bar">5 Star <div class="bar" style="width: 85%;"></div> 10k+</div>
+        <div class="rating-bar">4 Star <div class="bar" style="width: 25%;"></div> 1.5k</div>
+        <div class="rating-bar">3 Star <div class="bar" style="width: 10%;"></div> 374</div>
+        <div class="rating-bar">2 Star <div class="bar" style="width: 5%;"></div> 96</div>
+        <div class="rating-bar">1 Star <div class="bar" style="width: 6%;"></div> 103</div>
+    </div>
+    
+    <div class="testimonials-section">
+        <h2>What Our Customers Say</h2>
+        <div class="testimonials">
+            <div class="testimonial">
+                <img src="pfp.jpg" alt="Jessica Morales">
+                <h3>Glowing Results!</h3>
+                <p>★★★★★</p>
+                <p>I've struggled with dull skin for years, but after using this product, my skin has never looked better!</p>
+                <p>_____</p>
+                <strong>Jessica Morales</strong>
+            </div>
+            <div class="testimonial">
+                <img src="pfp2.jpg" alt="Emily Carter">
+                <h3>Hydration at Its Best</h3>
+                <p>★★★★★</p>
+                <p>his moisturizer is a game changer! My skin feels so soft and hydrated all day.</p>
+                <p>_____</p>
+                <strong>Emily Carter</strong>
+            </div>
+            <div class="testimonial">
+                <img src="pfp6.jpg" alt="Samantha Lee">
+                <h3>Great for Sensitive Skin</h3>
+                <p>★★★★☆</p>
+                <p>inally found a product that does not irritate my skin! It is gentle and effective.</p>
+                <p>_____</p>
+                <strong>Samantha Lee</strong>
+            </div>
+        </div>
+    </div>
+    
+    <div class="more-reviews-section">
+        <h2>More Reviews</h2>
+        <div class="reviews-container">
+            <div class="review">
+                <strong>Olivia Martinez</strong> 
+                <p>★★★★★</p>
+                <p>My acne cleared up in just two weeks! This is a miracle product.</p>
+            </div>
+            <div class="review">
+                <strong>Maris Jenn</strong>
+                <p>★★★★★</p>
+                <p>Finally found a lanyard with my program name! Great way to represent Mapúa.</p>
+            </div>
+            <div class="review">
+                <strong>Sophia Bennett</strong>
+                <p>★★★★★</p>
+                <p>I love how lightweight this serum is! It absorbs so quickly without leaving any residue.</p>
+            </div>
+            <div class="review">
+                <strong>Ava Robinson</strong>
+                <p>★★★★★</p>
+                <p>Noticed a huge difference in my skin texture! So smooth and radiant now.</p>
+            </div>
+            <div class="review">
+                <strong>Isabella Cruz</strong>
+                <p>★★★★★</p>
+                <p>The night cream works wonders! My skin looks fresh and plump every morning.</p>
+            </div>
+            <div class="review">
+                <strong>Mia Thompson</strong>
+                <p>★★★★★</p>
+                <p>Best sunscreen I've ever used—non-greasy and gives my skin a healthy glow!</p>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="footer-wrapper">
+            <div class="footer-top">
+                <!-- Contact Section -->
+                <div class="footer-contact">
+                    <h3 class="contact-heading">Contact</h3>
+                    <p class="contact-info">Address: Taal Bocaue Bakery infront of San pedro de Alcantara Church</p>
+                    <p class="contact-info">E-mail: <a href="oninestradalegaspi@gmail.com">oninestradalegaspi@gmail.com</a></p>
+                    <p class="contact-info">Phone: +0997 278 9498</p>
+                </div>
+                    
+                <!-- Brand Section -->
+                <div class="footer-brand">
+                    <h2 class="footer-logo">Body Cravings</h2>
+                    <p class="brand-tagline">An oasis of online beauty built specifically so your new site can take everyone's breaths away.</p>
+                    
+                    <div class="social-icons">
+                        <a href="https://www.facebook.com/herskinauthoriseddistributor/" target="_blank" class="social-link">
+                            <img src="facebook.png" alt="Facebook">
+                        </a>
+                        <a href="https://www.instagram.com/glamdoseph_/" target="_blank" class="social-link">
+                            <img src="instagram.png" alt="Instagram">
+                        </a>
+                        <a href="https://www.tiktok.com/@herskinph" target="_blank" class="social-link">
+                            <img src="tik-tok.png" alt="TikTok">
+                        </a>
+                        <a href="https://shopee.ph/bodycravingsph" target="_blank" class="social-link">
+                            <img src="brand-shopee.922x1024.png" alt="Shopee">
+                        </a>
+                    </div>
+                </div>
+                <!-- Collections Section -->
+                <div class="footer-collections">
+                    <h3 class="collections-heading">Authors</h3>
+                    <div class="collection-links">
+                        <span class="collection-link">Baladiang, Kennedy Fhyle J.</span>
+                        <span class="collection-link">Madenilla, Jasm Andrew S.</span>
+                        <span class="collection-link">Merino, Levi H.</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Footer Bottom -->
+            <div class="footer-bottom">
+                <p class="footer-tagline">Beauty is an attitude. It's the way you walk, the way you talk, and the way you feel about yourself.</p>
+                <div class="footer-divider"></div>
+                <p class="copyright">© 2025 Body Cravings. All rights reserved.</p>
+            </div>
+        
+        <!-- Back to Top Button 
+        <a href="about333.html" class="back-to-top">↑</a> -->
+    </footer>
+</body>
+</html>

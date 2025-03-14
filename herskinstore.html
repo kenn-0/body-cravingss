@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" type="image/png" href="logo2.png">
+  <title>HerSkin Products</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<style>
+  /* Products grid */
+  .products-container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    padding: 0 20px 40px;
+    justify-items: center;
+  }
+
+  @media (max-width: 1200px) {
+    .products-container {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
+  @media (max-width: 900px) {
+    .products-container {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (max-width: 600px) {
+    .products-container {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  .product-card {
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    overflow: hidden;
+    cursor: pointer;
+    transition: transform 0.2s;
+    width: 250px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  .product-card:hover {
+    transform: translateY(-5px);
+  }
+
+  .product-card img {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+  }
+
+  .product-info {
+    padding: 15px;
+    text-align: center;
+  }
+
+  .product-info h3 {
+    margin-bottom: 10px;
+    color: #333;
+  }
+
+  .product-info p {
+    color: rgb(163, 128, 83);
+    font-weight: bold;
+  }
+
+  /* Modal Styles */
+  .modal {
+    display: none;
+    position: fixed;
+    z-index: 9999;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.5);
+  }
+
+  .modal-content {
+    background-color: #fff;
+    margin: 5% auto;
+    padding: 20px;
+    border-radius: 10px;
+    width: 90%;
+    max-width: 600px;
+    position: relative;
+    animation: fadeIn 0.3s ease-in-out;
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .close-button {
+    color: #aaa;
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+  }
+
+  .close-button:hover {
+    color: rgb(163, 128, 83);
+  }
+
+  .modal-content img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+    margin-bottom: 15px;
+  }
+
+  .modal-description {
+    margin-bottom: 15px;
+    color: #666;
+  }
+
+  .modal-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .modal-header h2 {
+    color: #333;
+    margin-right: 10px;
+    flex: 1;
+  }
+
+  .modal-price {
+    color: rgb(163, 128, 83);
+    font-weight: bold;
+    font-size: 1.2rem;
+    white-space: nowrap;
+  }
+
+  .order-button {
+    background-color: rgb(163, 128, 83);
+    color: #fff;
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: bold;
+    margin-left: 10px;
+    transition: background-color 0.3s;
+  }
+
+  .order-button:hover {
+    background-color: rgb(163, 128, 83);
+  }
+
+  .box {
+    padding: 20px 40px;
+    font-size: 2em;
+    font-weight: bold;
+    text-align: center;
+    border-radius: 10px;
+    color: black;
+    background-color: cyan;
+  }
+
+  /* RESPONSIVENESS */
+
+/* Tablets (max-width: 1024px) */
+@media (max-width: 1024px) {
+  .products-container {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
+  }
+
+  .product-card {
+    width: 220px;
+  }
+
+  .modal-content {
+    width: 80%;
+    max-width: 500px;
+  }
+}
+
+/* Large Phones (max-width: 768px) */
+@media (max-width: 768px) {
+  .products-container {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+  }
+
+  .product-card {
+    width: 200px;
+  }
+
+  .modal-content {
+    width: 90%;
+    max-width: 450px;
+  }
+
+  .modal-header {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .modal-header h2 {
+    font-size: 1.5rem;
+  }
+
+  .modal-price {
+    font-size: 1rem;
+  }
+
+  .order-button {
+    width: 100%;
+    text-align: center;
+    margin-top: 10px;
+  }
+}
+
+/* Small Phones (max-width: 480px) */
+@media (max-width: 480px) {
+  .products-container {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+
+  .product-card {
+    width: 90%;
+    max-width: 300px;
+  }
+
+  .modal-content {
+    width: 95%;
+    max-width: 350px;
+  }
+
+  .modal-header h2 {
+    font-size: 1.3rem;
+  }
+
+  .modal-price {
+    font-size: 1rem;
+  }
+
+  .box {
+    font-size: 1.5em;
+    padding: 15px 30px;
+  }
+}
+</style>
+
+<body>
+  <nav id="navbar">
+    <ul>
+        <li><a href="index.html">Home</a></li>
+        <li class="dropdown">
+            <a href="#collection" class="dropbtn">Collections</a>
+            <ul class="dropdown-content">
+                <li><a href="#">HerSkin</a></li>
+                <li><a href="adornstore.html">Adorn</a></li>
+                <li><a href="fairyskinstore.html">FairySkin</a></li>
+            </ul>
+        </li>
+        <li><a href="store.html">Store</a></li>
+        <li><a href="reviews.html">Reviews</a></li>
+        <li><a href="ordernow.html">Order Now</a></li>
+        <li><a href="about.html">About</a></li>
+    </ul>
+    
+    <div class="logo">
+        <a href="index.html">
+            <img src="logo4.png" alt="Logo">
+        </a>
+    </div>
+</nav>
+
+  <h1 class="box">Herskin Products</h1>
+
+  <!-- Products Section -->
+  <div class="products-container">
+    <div class="product-card" onclick="showModal('Milk Body Lotion', 350, 'HerSkin1/milkbody.png', 'A nourishing lotion that hydrates and softens your skin.')">
+      <img src="HerSkin1/milkbodyadv.png" alt="Milk Body Lotion">
+      <div class="product-info">
+        <h3>Milk Body Lotion</h3>
+        <p>₱350</p>
+      </div>
+    </div>
+
+    <div class="product-card" onclick="showModal('Revita Glow Set', 420, 'HerSkin1/revitaglow.png', 'Revitalize your skin with this brightening glow serum.')">
+      <img src="HerSkin1/revitaglowadv.png" alt="Revita Glow">
+      <div class="product-info">
+        <h3>Revita Glow Set</h3>
+        <p>₱420</p>
+      </div>
+    </div>
+
+    <div class="product-card" onclick="showModal('Secret Glow Set', 400, 'HerSkin1/secretglow.png', 'Unlock radiant skin with Secret Glow, enriched with natural ingredients.')">
+      <img src="HerSkin1/secretglowadv.png" alt="Secret Glow">
+      <div class="product-info">
+        <h3>Secret Glow Set</h3>
+        <p>₱400</p>
+      </div>
+    </div>
+
+    <div class="product-card" onclick="showModal('Sun Defense 45', 320, 'HerSkin1/sundef45.png', 'Protect your skin from harmful UV rays with SPF 45 protection.')">
+      <img src="HerSkin1/sundef45adv.png" alt="Sun Defense 45">
+      <div class="product-info">
+        <h3>Sun Defense 45</h3>
+        <p>₱320</p>
+      </div>
+    </div>
+
+    <div class="product-card" onclick="showModal('Sun Defense 30', 300, 'HerSkin1/sundefadv.png', 'Daily sunscreen protection for all skin types.')">
+      <img src="HerSkin1/sundefadv.png" alt="Sun Defense 30">
+      <div class="product-info">
+        <h3>Sun Defense 30</h3>
+        <p>₱300</p>
+      </div>
+    </div>
+
+    <div class="product-card" onclick="showModal('Tone Up Cream', 380, 'HerSkin1/toneup.png', 'Instantly brighten your complexion with our Tone Up Cream.')">
+      <img src="HerSkin1/toneupadv.png" alt="Tone Up Cream">
+      <div class="product-info">
+        <h3>Tone Up Cream</h3>
+        <p>₱380</p>
+      </div>
+    </div>
+
+  </div>
+
+<!-- Modal -->
+<div id="productModal" class="modal">
+  <div class="modal-content">
+    <span class="close-button" onclick="closeModal()">&times;</span>
+    <img id="modalImage" src="" alt="Product Image">
+    <p class="modal-description" id="modalDescription"></p>
+    <div class="modal-header">
+      <h2 id="modalTitle"></h2>
+      <div class="modal-price" id="modalPrice"></div>
+      <a href="ordernow.html" class="order-button">Order Now</a>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-wrapper">
+      <div class="footer-top">
+          <!-- Contact Section -->
+          <div class="footer-contact">
+              <h3 class="contact-heading">Contact</h3>
+              <p class="contact-info">Address: Taal Bocaue Bakery infront of San pedro de Alcantara Church</p>
+              <p class="contact-info">E-mail: <a href="oninestradalegaspi@gmail.com">oninestradalegaspi@gmail.com</a></p>
+              <p class="contact-info">Phone: +0997 278 9498</p>
+          </div>
+              
+          <!-- Brand Section -->
+          <div class="footer-brand">
+              <h2 class="footer-logo">Body Cravings</h2>
+              <p class="brand-tagline">An oasis of online beauty built specifically so your new site can take everyone's breaths away.</p>
+              
+              <div class="social-icons">
+                  <a href="https://www.facebook.com/herskinauthoriseddistributor/" target="_blank" class="social-link">
+                      <img src="facebook.png" alt="Facebook">
+                  </a>
+                  <a href="https://www.instagram.com/glamdoseph_/" target="_blank" class="social-link">
+                      <img src="instagram.png" alt="Instagram">
+                  </a>
+                  <a href="https://www.tiktok.com/@herskinph" target="_blank" class="social-link">
+                      <img src="tik-tok.png" alt="TikTok">
+                  </a>
+                  <a href="https://shopee.ph/bodycravingsph" target="_blank" class="social-link">
+                      <img src="brand-shopee.922x1024.png" alt="Shopee">
+                  </a>
+              </div>
+          </div>
+          <!-- Collections Section -->
+          <div class="footer-collections">
+              <h3 class="collections-heading">Authors</h3>
+              <div class="collection-links">
+                  <span class="collection-link">Baladiang, Kennedy Fhyle J.</span>
+                  <span class="collection-link">Madenilla, Jasm Andrew S.</span>
+                  <span class="collection-link">Merino, Levi H.</span>
+              </div>
+          </div>
+      </div>
+      
+      <!-- Footer Bottom -->
+      <div class="footer-bottom">
+          <p class="footer-tagline">Beauty is an attitude. It's the way you walk, the way you talk, and the way you feel about yourself.</p>
+          <div class="footer-divider"></div>
+          <p class="copyright">© 2025 Body Cravings. All rights reserved.</p>
+      </div>
+  
+  <!-- Back to Top Button 
+  <a href="about333.html" class="back-to-top">↑</a> -->
+</footer>
+
+<!-- Script for modal functionality -->
+<script>
+  function showModal(name, price, imgSrc, description) {
+    document.getElementById('modalTitle').innerText = name;
+    document.getElementById('modalPrice').innerText = `₱${price}`;
+    document.getElementById('modalImage').src = imgSrc;
+    document.getElementById('modalDescription').innerText = description;
+
+    document.getElementById('productModal').style.display = 'block';
+  }
+
+  function closeModal() {
+    document.getElementById('productModal').style.display = 'none';
+  }
+
+  // Close modal when clicking outside the content
+  window.onclick = function(event) {
+    const modal = document.getElementById('productModal');
+    if (event.target === modal) {
+      modal.style.display = 'none';
+    }
+  }
+</script>
+
+</body>
+</html>

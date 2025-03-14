@@ -1,0 +1,724 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="logo2.png">
+    <title>Body Cravings</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+</head>
+
+<style>
+/* Slider Container */
+.slider-container {
+    position: relative;
+    width: 1200px;
+    margin: 50px auto 0;
+    overflow: hidden;
+    border-radius: 18px; /* Smooth edges */
+    box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.2);
+    display: block;
+}
+
+/* Slider */
+.slider {
+    display: flex;
+    transition: transform 0.8s ease-in-out;
+}
+
+/* Individual Slides */
+.slide {
+    min-width: 1200px;
+    box-sizing: border-box;
+}
+
+/* Slide Images */
+.slide img {
+    width: 1200px;
+    height: 550px;
+    display: block;
+    border-radius: 10px; /* Ensures smooth edges */
+}
+
+/* Navigation Buttons */
+.prev, .next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out, background 0.3s ease-in-out;
+    
+    /* Circular buttons */
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.slider-container:hover .prev,
+.slider-container:hover .next {
+    opacity: 1;
+}
+
+.prev {
+    left: 10px;
+}
+
+.next {
+    right: 10px;
+}
+
+.indicators {
+    display: flex;
+    justify-content: center;
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    gap: 8px;
+}
+
+.indicator {
+    width: 25px; /* Make it rectangular */
+    height: 5px; /* Reduce height */
+    border-radius: 2px;
+    background-color: rgba(255, 255, 255, 0.3); /* Default gray */
+    transition: background-color 0.2s ease-in-out, width 0.2s ease-in-out;
+}
+
+.indicator.active {
+    background-color: white; /* Active indicator is white */
+}
+
+.best-seller-container {
+    width: 100%;
+    margin: auto;
+    padding: 60px 0;
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#best-sellers h2 {
+    text-align: center;
+    font-size: 28px;
+    color: #333;
+    margin: 0; /* Removes unwanted white space */
+    padding: 5px 0; /* Adds spacing */
+    background-color: white;
+    width: 100%; /* Ensures it spans full width */
+    display: block;
+}
+
+#best-sellers {
+    margin-top: 60px; /* Adjust this value as needed */
+}
+
+.best-seller-wrapper {
+    width: 90%;
+    max-width: 1200px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.best-seller-slider {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 50px;
+    justify-content: center;
+    transition: transform 0.8s ease-in-out;
+}
+
+.best-seller-slider .product {
+    width: 300px;
+    height: auto;
+    border-radius: 40px;
+    position: relative;
+    overflow: hidden;
+    flex: 0 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.3);
+    transition: box-shadow 0.5s ease-in-out;
+}
+
+.best-seller-slider .product img {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+    transition: transform 0.3s ease-in-out;
+}
+
+.best-seller-slider .product:hover img {
+    transform: scale(1.1);
+}
+
+.product-name {
+    font-size: 13px;
+    font-weight: bold;
+    color: black;
+    text-align: center;
+    margin-top: 15px;
+    display: block;
+    width: 100%;
+    transition: text-decoration 0.3s ease-in-out;
+}
+
+
+.product:hover .product-name {
+    text-decoration: underline;
+}
+
+
+.product-categories {
+    background-color: white;
+    display: flex;
+    flex-direction: column; /* Makes everything stack in a column */
+    align-items: center; /* Centers all children horizontally */
+    gap: 50px; /* Space between the title and the categories */
+    padding: 50px 0;
+    text-align: center;
+    margin-bottom: 70px;
+}
+
+.product-categories h2 {
+    font-size: 28px;
+    color: #333;
+    margin-bottom: 10px; /* Reduce space to avoid unnecessary gaps */
+    text-align: center;
+}
+
+.categories-container {
+    display: flex;
+    justify-content: center;
+    gap: 100px; /* Keeps space between the categories */
+}
+
+.category {
+    text-align: center;
+    transition: transform 0.3s ease-in-out;
+}
+
+.category a {
+    text-decoration: none;
+    color: #333;
+}
+
+.category img {
+    width: 490px;
+    height: 400px;
+    border-radius: 20px;
+    transition: transform 0.3s ease-in-out;
+    box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.category p {
+    margin-top: 10px;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.category:hover img {
+    transform: scale(1.1);
+}
+
+.standout {
+    text-align: center;
+    padding: 50px 20px;
+    background: white; /* Light background */
+    margin: auto;
+}
+
+.standout h2 {
+    font-size: 28px;
+    color: #333;
+    margin-bottom: 30px;
+}
+
+.standout-container {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap; /* Ensures responsiveness */
+}
+
+.standout-box {
+    background: #fff;
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    width: 300px;
+    transition: transform 0.3s ease-in-out;
+}
+
+.standout-box:hover {
+    transform: translateY(-5px);
+}
+
+.standout-box h3 {
+    font-size: 18px;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.standout-box p {
+    font-size: 13px;
+    color: #666;
+    font-weight: bold;
+}
+
+/* RESPONSIVENESS */
+
+/* For tablets (width 1024px and below) */
+@media screen and (max-width: 1024px) {
+    .slider-container {
+        width: 90%;
+    }
+
+    .slide,
+    .slide img {
+        width: 100%;
+        height: auto;
+    }
+
+    .prev, .next {
+        width: 35px;
+        height: 35px;
+        font-size: 14px;
+    }
+
+    .best-seller-slider {
+        gap: 30px;
+    }
+
+    .categories-container {
+        gap: 50px;
+        flex-wrap: wrap;
+    }
+
+    .category img {
+        width: 400px;
+        height: 320px;
+    }
+}
+
+/* For mobile devices (width 768px and below) */
+@media screen and (max-width: 768px) {
+    .slider-container {
+        width: 100%;
+        margin-top: 30px;
+    }
+
+    .slide,
+    .slide img {
+        width: 100%;
+        height: auto;
+    }
+
+    .prev, .next {
+        width: 30px;
+        height: 30px;
+        font-size: 12px;
+        padding: 5px;
+    }
+
+    .indicators {
+        bottom: 5px;
+    }
+
+    .indicator {
+        width: 15px;
+        height: 4px;
+    }
+
+    .best-seller-wrapper {
+        width: 100%;
+        padding: 0 20px;
+    }
+
+    .best-seller-slider {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .best-seller-slider .product {
+        width: 100%;
+        max-width: 350px;
+    }
+
+    .categories-container {
+        flex-direction: column;
+        align-items: center;
+        gap: 30px;
+    }
+
+    .category img {
+        width: 320px;
+        height: 260px;
+    }
+
+    .standout-container {
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+    }
+
+    .standout-box {
+        width: 90%;
+        max-width: 350px;
+    }
+}
+
+/* For extra small devices (width 480px and below) */
+@media screen and (max-width: 480px) {
+    .slider-container {
+        border-radius: 10px;
+    }
+
+    .prev, .next {
+        width: 25px;
+        height: 25px;
+        font-size: 10px;
+        padding: 5px;
+    }
+
+    .indicator {
+        width: 12px;
+        height: 3px;
+    }
+
+    .best-seller-slider .product {
+        width: 100%;
+        max-width: 300px;
+    }
+
+    .category img {
+        width: 100%;
+        height: auto;
+    }
+
+    .standout-box {
+        width: 100%;
+        max-width: 300px;
+    }
+}
+</style>
+
+<body>
+    <nav id="navbar">
+        <ul>
+            <li><a href="#">Home</a></li>
+            <li class="dropdown">
+                <a href="#collection" class="dropbtn">Collections</a>
+                <ul class="dropdown-content">
+                    <li><a href="herskinstore.html">HerSkin</a></li>
+                    <li><a href="adornstore.html">Adorn</a></li>
+                    <li><a href="fairyskinstore.html">FairySkin</a></li>
+                </ul>
+            </li>
+            <li><a href="store.html">Store</a></li>
+            <li><a href="reviews.html">Reviews</a></li>
+            <li><a href="ordernow.html">Order Now</a></li>
+            <li><a href="about.html">About</a></li>
+        </ul>
+        
+        <div class="logo">
+            <a href="index.html">
+                <img src="logo4.png" alt="Logo">
+            </a>
+        </div>
+    </nav>
+
+    <section id="home">
+            <div class="slider-container">
+                <div class="slider">
+                    <div class="slide"><img src="kath.png" alt="HerSkin"></div>
+                    <div class="slide"><img src="cams.png" alt="Adorn"></div>
+                    <div class="slide"><img src="kim.png" alt="FairySkin"></div>
+                </div>
+    
+                <div class="indicators"></div>
+    
+                <button class="prev" onclick="moveSlide(-1)">&#10094;</button>
+                <button class="next" onclick="moveSlide(1)">&#10095;</button>
+            </div>
+    </section>
+
+    <section class="standout">
+        <h2>What Makes Us Stand Out?</h2>
+        <div class="standout-container">
+            <div class="standout-box">
+                <h3>Unmatched Quality</h3>
+                <p>Every product is crafted with the highest standards, ensuring top-tier results you can trust.</p>
+            </div>
+    
+            <div class="standout-box">
+                <h3>Real Results</h3>
+                <p>Backed by real customer reviews and proven effectiveness—our products deliver.</p>
+            </div>
+    
+            <div class="standout-box">
+                <h3>Customer-First Approach</h3>
+                <p>Your satisfaction is our priority. We listen, improve, and always put you first.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="best-sellers">
+        <h2>Best Sellers by Body Cravings</h2>
+        <div class="best-seller-container">
+            <div class="best-seller-wrapper">
+                <div class="best-seller-slider">
+                    <div class="product">
+                        <img src="HerSkin/z2pgv9vw.png"
+                            data-hover="HerSkin/a1ahnqyi.png" 
+                            alt="Revita Glow">
+                        <p class="product-name">Revita Glow</p>
+                    </div>
+    
+                    <div class="product">
+                        <img src="HerSkin/2lx2n28e.png" 
+                            data-hover="HerSkin/2kwvlryq.png" 
+                            alt="Secret Glow">
+                        <p class="product-name">Secret Glow</p>
+                    </div>
+    
+                    <div class="product">
+                        <img src="Adorn/ylxqeapj.png" 
+                            data-hover="Adorn/pr7bazpi.png" 
+                            alt="Radiant Potion">
+                        <p class="product-name">Radiant Potion</p>
+                    </div>
+    
+                    <div class="product">
+                        <img src="Adorn/ieredak3.png" 
+                            data-hover="Adorn/ozhfds9h.png" 
+                            alt="Premium Sunscreen">
+                        <p class="product-name">Premium Sunscreen</p>
+                    </div>
+    
+                    <div class="product">
+                        <img src="FairySkin/rrk8wk2b.png" 
+                            data-hover="FairySkin/630fcw4g.png" 
+                            alt="Premium Brightening Kit">
+                        <p class="product-name">Premium Brightening Kit</p>
+                    </div>
+    
+                    <div class="product">
+                        <img src="FairySkin/34l8yujt.png" 
+                            data-hover="FairySkin/pgjmf0wd.png" 
+                            alt="Premium Tinted Sunscreen">
+                        <p class="product-name">Premium Tinted Sunscreen</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="product-categories">
+        <h2>Coming Soon</h2>
+        <div class="categories-container"> 
+            <div class="category">
+                    <img src="c1.png" alt="Facial Set">
+            </div>
+            <div class="category">
+                    <img src="c2.png" alt="Lotions">
+            </div>
+            <div class="category">
+                    <img src="c3.png" alt="Soap & Cleansers">
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-wrapper">
+            <div class="footer-top">
+                <!-- Contact Section -->
+                <div class="footer-contact">
+                    <h3 class="contact-heading">Contact</h3>
+                    <p class="contact-info">Address: Taal Bocaue Bakery infront of San pedro de Alcantara Church</p>
+                    <p class="contact-info">E-mail: <a href="oninestradalegaspi@gmail.com">oninestradalegaspi@gmail.com</a></p>
+                    <p class="contact-info">Phone: +0997 278 9498</p>
+                </div>
+                    
+                <!-- Brand Section -->
+                <div class="footer-brand">
+                    <h2 class="footer-logo">Body Cravings</h2>
+                    <p class="brand-tagline">An oasis of online beauty built specifically so your new site can take everyone's breaths away.</p>
+                    
+                    <div class="social-icons">
+                        <a href="https://www.facebook.com/herskinauthoriseddistributor/" target="_blank" class="social-link">
+                            <img src="facebook.png" alt="Facebook">
+                        </a>
+                        <a href="https://www.instagram.com/glamdoseph_/" target="_blank" class="social-link">
+                            <img src="instagram.png" alt="Instagram">
+                        </a>
+                        <a href="https://www.tiktok.com/@herskinph" target="_blank" class="social-link">
+                            <img src="tik-tok.png" alt="TikTok">
+                        </a>
+                        <a href="https://shopee.ph/bodycravingsph" target="_blank" class="social-link">
+                            <img src="brand-shopee.922x1024.png" alt="Shopee">
+                        </a>
+                    </div>
+                </div>
+                <!-- Collections Section -->
+                <div class="footer-collections">
+                    <h3 class="collections-heading">Authors</h3>
+                    <div class="collection-links">
+                        <span class="collection-link">Baladiang, Kennedy Fhyle J.</span>
+                        <span class="collection-link">Madenilla, Jasm Andrew S.</span>
+                        <span class="collection-link">Merino, Levi H.</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Footer Bottom -->
+            <div class="footer-bottom">
+                <p class="footer-tagline">Beauty is an attitude. It's the way you walk, the way you talk, and the way you feel about yourself.</p>
+                <div class="footer-divider"></div>
+                <p class="copyright">© 2025 Body Cravings. All rights reserved.</p>
+            </div>
+        
+        <!-- Back to Top Button 
+        <a href="about333.html" class="back-to-top">↑</a> -->
+    </footer>
+
+    <script>
+        const slider = document.querySelector(".slider");
+        const slides = Array.from(document.querySelectorAll(".slide")); 
+        const prevBtn = document.querySelector(".prev-btn"); 
+        const nextBtn = document.querySelector(".next-btn");
+
+        let currentIndex = 1; 
+        const slideWidth = 100; 
+        const autoSlideInterval = 4000; 
+        let autoSlideTimer;
+        let restartTimer;
+
+        const firstClone = slides[0].cloneNode(true);
+        const lastClone = slides[slides.length - 1].cloneNode(true);
+
+        firstClone.classList.add("clone");
+        lastClone.classList.add("clone");
+
+        slider.appendChild(firstClone); 
+        slider.insertBefore(lastClone, slides[0]); 
+
+        const allSlides = Array.from(document.querySelectorAll(".slide")); 
+        const totalSlides = allSlides.length;
+
+        slider.style.transform = `translateX(-${currentIndex * slideWidth}%)`;
+
+        function moveSlide(step) {
+        currentIndex += step;
+        slider.style.transition = "transform 0.8s ease-in-out";
+        slider.style.transform = `translateX(-${currentIndex * slideWidth}%)`;
+
+        setTimeout(() => {
+            if (currentIndex >= totalSlides - 1) {
+                slider.style.transition = "none";
+                currentIndex = 1;
+                slider.style.transform = `translateX(-${currentIndex * slideWidth}%)`;
+            } else if (currentIndex <= 0) {
+                slider.style.transition = "none";
+                currentIndex = totalSlides - 2;
+                slider.style.transform = `translateX(-${currentIndex * slideWidth}%)`;
+            }
+        }, 800);
+    }
+
+        function startAutoSlide() {
+            stopAutoSlide();
+            autoSlideTimer = setInterval(() => moveSlide(1), autoSlideInterval);
+        }
+
+        function stopAutoSlide() {
+            clearInterval(autoSlideTimer);
+        }
+
+        function manualMove(step) {
+            stopAutoSlide();
+            moveSlide(step);
+            
+            clearTimeout(restartTimer);
+            restartTimer = setTimeout(startAutoSlide, 5000);
+        }
+
+        startAutoSlide();
+
+        prevBtn.addEventListener("click", () => manualMove(-1));
+        nextBtn.addEventListener("click", () => manualMove(1));
+    </script>
+    
+    <script>
+        const indicatorContainer = document.querySelector(".indicators");
+
+        for (let i = 0; i < slides.length; i++) {
+            const dot = document.createElement("div");
+            dot.classList.add("indicator");
+            if (i === 0) dot.classList.add("active");
+            indicatorContainer.appendChild(dot);
+        }
+
+        const indicators = document.querySelectorAll(".indicator");
+
+        function updateIndicators() {
+            indicators.forEach((dot, index) => {
+                if (currentIndex === index + 1 || (currentIndex === totalSlides - 1 && index === 0)) {
+                    dot.classList.add("active");
+                } else {
+                    dot.classList.remove("active");
+                }
+            });
+        }
+
+        function moveSlide(step) {
+            currentIndex += step;
+            slider.style.transition = "transform 1s ease-in-out";
+            slider.style.transform = `translateX(-${currentIndex * slideWidth}%)`;
+
+            setTimeout(() => {
+                if (currentIndex >= totalSlides - 1) {
+                    slider.style.transition = "none";
+                    currentIndex = 1;
+                    slider.style.transform = `translateX(-${currentIndex * slideWidth}%)`;
+                } else if (currentIndex <= 0) {
+                    slider.style.transition = "none";
+                    currentIndex = totalSlides - 2;
+                    slider.style.transform = `translateX(-${currentIndex * slideWidth}%)`;
+                }
+                updateIndicators();
+            }, 800);
+        }
+    </script>
+
+    <script>
+        document.querySelectorAll(".best-seller-slider .product img").forEach(img => {
+        const originalSrc = img.src; // Store the original image
+        const hoverSrc = img.getAttribute("data-hover"); // Get the hover image
+
+            if (hoverSrc) {
+                img.addEventListener("mouseenter", () => {
+                    img.src = hoverSrc; // Change to hover image
+                });
+                img.addEventListener("mouseleave", () => {
+                    img.src = originalSrc; // Revert to original image
+                });
+            }
+        });
+    </script>
+</body>
+</html>

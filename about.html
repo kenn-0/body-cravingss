@@ -1,0 +1,679 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Body Cravings - High-quality, cruelty-free beauty products">
+    <link rel="icon" type="image/png" href="logo2.png">
+    <title>About</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<style>
+    :root {
+        --primary-color: #5a4633;
+        --accent-color: #ff69b4;
+        --dark-color: #333;
+        --light-color: #f4f4f4;
+        --white: #fff;
+        --black: #000;
+        --transition: all 0.3s ease-in-out;
+    }
+
+    /* Hero Section - Static Image Instead of Carousel */
+    .hero-section {
+        position: relative;
+        height: 80vh;
+        background-color: #f9f0ef;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0 10%;
+        overflow: hidden;
+    }
+    
+    .hero-content {
+        max-width: 50%;
+        padding-right: 5%;
+        z-index: 2;
+    }
+    
+    .hero-tagline {
+        font-family: 'DM Sans', sans-serif;
+        font-weight: 400;
+        font-size: 1.2rem;
+        font-style: italic;
+        margin-bottom: 1rem;
+        color: #333;
+    }
+    
+    .hero-title {
+        font-family: 'DM Sans', sans-serif;
+        font-size: 5rem;
+        font-weight: 700;
+        letter-spacing: 2px;
+        margin-bottom: 1.5rem;
+        color: #000;
+    }
+    
+    .hero-subtitle {
+        font-family: 'DM Sans', sans-serif;
+        font-size: 1rem;
+        line-height: 1.6;
+        color: #666;
+        max-width: 80%;
+    }
+    
+    .hero-image {
+        max-width: 40%;
+        height: 70%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 1;
+    }
+    
+    .hero-image img {
+        max-height: 100%;
+        max-width: 100%;
+        object-fit: contain;
+    }
+    
+    /* About Section */
+    .about {
+        max-width: 100%;
+        margin: 0 auto;
+        padding: 80px 40px;
+        text-align: center;
+        position: relative;
+        overflow: hidden;
+        /* Removed background-color: #f9f0ef; */
+    }
+    
+    .about::before {
+        content: '';
+        position: absolute;
+        top: -70px; 
+        left: 0;
+        width: 100%;
+        height: 80px;
+        background: #fff;
+        border-radius: 50% 50% 0 0 / 100% 100% 0 0;
+    }
+    
+    .about::after {
+        content: '';
+        position: absolute;
+        bottom: -50px;
+        left: 0;
+        width: 100%;
+        height: 100px;
+        background: #fff;
+        border-radius: 0 0 50% 50% / 0 0 100% 100%;
+        z-index: 1;
+    }
+    
+    .about-inner {
+        max-width: 1200px;
+        margin: 0 auto;
+        position: relative;
+        z-index: 2;
+    }
+    
+    .section-title {
+        font-size: 3em;
+        margin-bottom: 20px;
+        position: relative;
+        display: inline-block;
+        color: var(--primary-color);
+    }
+    
+    .section-title::after {
+        content: '';
+        position: absolute;
+        bottom: -10px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 80px;
+        height: 3px;
+        background-color: var(--accent-color);
+    }
+    
+    .about-content {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 60px;
+        margin-top: 50px;
+    }
+    
+    .about-story {
+        max-width: 800px;
+    }
+    
+    .about-story h3 {
+        font-size: 1.8em;
+        margin-bottom: 20px;
+        color: var(--primary-color);
+    }
+    
+    .about-story p {
+        font-size: 1.1em;
+        line-height: 1.8;
+        margin-bottom: 20px;
+        color: #555;
+    }
+    
+    .mission-vision {
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+        gap: 40px;
+        margin-top: 30px;
+    }
+    
+    .mission, .vision {
+        flex: 1;
+        padding: 40px;
+        background: rgba(255, 255, 255, 0.8);
+        border-radius: 20px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    
+    .mission:hover, .vision:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+    }
+    
+    .mission h3, .vision h3 {
+        font-size: 1.6em;
+        margin-bottom: 20px;
+        color: var(--primary-color);
+        position: relative;
+        display: inline-block;
+    }
+    
+    .mission h3::after, .vision h3::after {
+        content: '';
+        position: absolute;
+        bottom: -8px;
+        left: 0;
+        width: 50px;
+        height: 2px;
+        background-color: var(--accent-color);
+    }
+    
+    .mission p, .vision p {
+        font-size: 1.05em;
+        line-height: 1.8;
+        color: #555;
+    }
+    
+    .brands-section {
+        width: 100%;
+        margin-top: 60px;
+    }
+    
+    .brands-section h3 {
+        font-size: 1.8em;
+        margin-bottom: 30px;
+        color: var(--primary-color);
+    }
+    
+    .brands-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 40px;
+        margin-top: 30px;
+    }
+    
+    .brand-card {
+        background: #fff;
+        border-radius: 15px;
+        overflow: hidden;
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        height: 100%;
+        display: block;
+        flex-direction: column;
+        text-decoration: none;
+        color: inherit;
+    }
+    
+    .brand-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+    }
+    
+    .brand-image {
+        height: 200px;
+        width: 100%;
+        overflow: hidden;
+    }
+    
+    .brand-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.5s ease;
+    }
+    
+    .brand-card:hover .brand-image img {
+        transform: scale(1.05);
+    }
+    
+    .brand-info {
+        padding: 25px;
+        flex-grow: 1;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+    
+    .brand-name {
+        font-size: 1.3em;
+        margin-bottom: 10px;
+        color: var(--primary-color);
+    }
+    
+    .brand-desc {
+        font-size: 0.95em;
+        color: #666;
+        line-height: 1.7;
+        margin-bottom: 20px;
+    }
+    
+    .accent-shape {
+        position: absolute;
+        background-color: rgba(255, 105, 180, 0.05);
+        border-radius: 50%;
+        z-index: 0;
+    }
+    
+    .shape-1 {
+        width: 300px;
+        height: 300px;
+        top: 10%;
+        left: 5%;
+    }
+    
+    .shape-2 {
+        width: 400px;
+        height: 400px;
+        bottom: 10%;
+        right: 5%;
+    }
+    
+    .shape-3 {
+        width: 200px;
+        height: 200px;
+        top: 40%;
+        right: 15%;
+    }
+    
+    /* Product Grid */
+    .product-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+        gap: 30px;
+        margin-top: 50px;
+    }
+    
+    .product-card {
+        position: relative;
+        overflow: hidden;
+        border-radius: 15px;
+        box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.1);
+        transition: var(--transition);
+    }
+    
+    .product-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0px 10px 25px rgba(0, 0, 0, 0.2);
+    }
+    
+    .product-card img {
+        width: 100%;
+        display: block;
+        transition: var(--transition);
+    }
+    
+    .product-card:hover img {
+        transform: scale(1.05);
+    }
+    
+    .product-overlay {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background: rgba(0, 0, 0, 0.7);
+        color: var(--white);
+        padding: 20px;
+        transform: translateY(100%);
+        transition: var(--transition);
+    }
+    
+    .product-card:hover .product-overlay {
+        transform: translateY(0);
+    }
+    
+    .product-name {
+        font-size: 1.3em;
+        margin-bottom: 10px;
+    }
+    
+    .product-price {
+        font-size: 1.2em;
+        font-weight: bold;
+        color: var(--accent-color);
+    }
+    
+    /* Responsive Styles */
+    @media (max-width: 992px) {
+        #navbar {
+            padding: 15px 20px;
+        }
+        
+        .mission-vision {
+            flex-direction: column;
+        }
+        
+        .mission, .vision {
+            width: auto;
+        }
+        
+        .brands-grid {
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+        }
+        
+        .hero-content {
+            max-width: 60%;
+        }
+        
+        .hero-image {
+            max-width: 35%;
+        }
+    }
+    
+    @media (max-width: 768px) {
+        #navbar {
+            flex-direction: column;
+            padding: 15px 10px;
+        }
+        
+        #navbar ul {
+            flex-wrap: wrap;
+            justify-content: center;
+            margin-bottom: 15px;
+        }
+        
+        #navbar li {
+            margin: 0 10px 5px;
+        }
+        
+        .logo {
+            margin: 10px 0;
+        }
+        
+        .about {
+            padding: 60px 20px;
+        }
+        
+        .section-title {
+            font-size: 2.5em;
+        }
+        
+        .brands-grid {
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+        }
+        
+        .product-grid {
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+        }
+        
+        .hero-section {
+            flex-direction: column;
+            justify-content: center;
+            padding-top: 60px;
+            height: auto;
+            padding-bottom: 60px;
+        }
+        
+        .hero-content {
+            max-width: 100%;
+            text-align: center;
+            padding-right: 0;
+            margin-bottom: 30px;
+        }
+        
+        .hero-subtitle {
+            max-width: 100%;
+            margin: 0 auto;
+        }
+        
+        .hero-image {
+            max-width: 70%;
+        }
+        
+        .hero-title {
+            font-size: 3.5rem;
+        }
+    }
+    
+    @media (max-width: 576px) {
+        .section-title {
+            font-size: 2em;
+        }
+        
+        .about-story h3, .brands-section h3 {
+            font-size: 1.5em;
+        }
+        
+        .mission, .vision {
+            padding: 30px 20px;
+        }
+        
+        .brands-grid {
+            grid-template-columns: 1fr;
+        }
+        
+        .hero-title {
+            font-size: 2.5rem;
+        }
+        
+        .hero-image {
+            max-width: 80%;
+        }
+        
+        .dropdown-content {
+            position: static;
+            box-shadow: none;
+            width: 100%;
+            text-align: center;
+        }
+        
+        .dropdown:hover .dropdown-content {
+            display: flex;
+            flex-direction: column;
+        }
+    }
+
+    /* Fix for duplicate display property */
+    .social-link {
+        display: flex;
+    }
+
+    /* Fix for scrolled class */
+    .scrolled {
+        background-color: #ffffff;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    }
+</style>
+
+<body>
+    <nav id="navbar">
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li class="dropdown">
+                <a href="#collection" class="dropbtn">Collections</a>
+                <ul class="dropdown-content">
+                    <li><a href="herskinstore.html">HerSkin</a></li>
+                    <li><a href="adornstore.html">Adorn</a></li>
+                    <li><a href="fairyskinstore.html">FairySkin</a></li>
+                </ul>
+            </li>
+            <li><a href="store.html">Store</a></li>
+            <li><a href="reviews.html">Reviews</a></li>
+            <li><a href="ordernow.html">Order Now</a></li>
+            <li><a href="#" class="about-link">About</a></li>
+        </ul>
+        
+        <div class="logo">
+            <a href="index.html">
+                <img src="logo4.png" alt="Logo">
+            </a>
+        </div>
+    </nav>
+    
+    <main>
+        <section class="about" id="about-section">
+            <div class="about-inner">
+                <h2 class="section-title">Our Story</h2>
+                
+                <div class="about-content">
+                    <div class="about-story">
+                        <h3>The Beauty Journey</h3>
+                        <p>Founded in 2021, Body Cravings began as a passionate venture into the world of skincare and beauty. What started as a small online business selling curated skincare products on platforms like Shopee and TikTok Shop has blossomed into a thriving beauty destination trusted by customers across the Philippines.</p>
+                        <p>Our growth has been fueled by our commitment to quality, authenticity, and customer satisfaction. Today, we proudly represent and distribute premium brands such as HerSkin, Adorn, and FairySkin, with plans to expand our portfolio in the coming years.</p>
+                    </div>
+                    
+                    <div class="mission-vision">
+                        <div class="mission">
+                            <h3>Our Mission</h3>
+                            <p>At Body Cravings, we are committed to providing access to high-quality, authentic skincare products that enhance natural beauty. We believe everyone deserves products that are effective, safe, and ethically sourced. Our mission is to carefully curate the best beauty products from trusted brands and deliver them with exceptional service, empowering our customers to look and feel their best every day.</p>
+                        </div>
+                        
+                        <div class="vision">
+                            <h3>Our Vision</h3>
+                            <p>Body Cravings aspires to be the premier destination for beauty enthusiasts seeking premium skincare solutions. We envision a future where we continuously expand our brand partnerships to offer an even wider range of quality products. Our goal is to build a beauty community that celebrates authenticity, self-care, and confidence, making premium skincare accessible to everyone.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="brands-section">
+                        <h3>Our Featured Brands</h3>
+                        <div class="brands-grid">
+                            <a href="herskinstore.html" class="brand-card">
+                                <div class="brand-image">
+                                    <img src="kath.png" alt="HerSkin Products">
+                                </div>
+                                <div class="brand-info">
+                                    <h4 class="brand-name">HerSkin</h4>
+                                    <p class="brand-desc">Specially formulated skincare that addresses the unique needs of women's skin, creating effective solutions for a radiant complexion.</p>
+                                </div>
+                            </a>
+                    
+                            <a href="adornstore.html" class="brand-card">
+                                <div class="brand-image">
+                                    <img src="cams.png" alt="Adorn Products">
+                                </div>
+                                <div class="brand-info">
+                                    <h4 class="brand-name">Adorn</h4>
+                                    <p class="brand-desc">Luxury skincare that combines scientific innovation with natural ingredients to deliver visible results for all skin types.</p>
+                                </div>
+                            </a>
+                    
+                            <a href="fairyskinstore.html" class="brand-card">
+                                <div class="brand-image">
+                                    <img src="kim.png" alt="FairySkin Products">
+                                </div>
+                                <div class="brand-info">
+                                    <h4 class="brand-name">FairySkin</h4>
+                                    <p class="brand-desc">Gentle yet effective products designed to brighten and even skin tone, creating a youthful and glowing appearance.</p>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Decorative accent shapes -->
+                <div class="accent-shape shape-1"></div>
+                <div class="accent-shape shape-2"></div>
+                <div class="accent-shape shape-3"></div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-wrapper">
+            <div class="footer-top">
+                <!-- Contact Section -->
+                <div class="footer-contact">
+                    <h3 class="contact-heading">Contact</h3>
+                    <p class="contact-info">Address: Taal Bocaue Bakery infront of San pedro de Alcantara Church</p>
+                    <p class="contact-info">E-mail: <a href="oninestradalegaspi@gmail.com">oninestradalegaspi@gmail.com</a></p>
+                    <p class="contact-info">Phone: +0997 278 9498</p>
+                </div>
+                    
+                <!-- Brand Section -->
+                <div class="footer-brand">
+                    <h2 class="footer-logo">Body Cravings</h2>
+                    <p class="brand-tagline">An oasis of online beauty built specifically so your new site can take everyone's breaths away.</p>
+                    
+                    <div class="social-icons">
+                        <a href="https://www.facebook.com/herskinauthoriseddistributor/" target="_blank" class="social-link">
+                            <img src="facebook.png" alt="Facebook">
+                        </a>
+                        <a href="https://www.instagram.com/glamdoseph_/" target="_blank" class="social-link">
+                            <img src="instagram.png" alt="Instagram">
+                        </a>
+                        <a href="https://www.tiktok.com/@herskinph" target="_blank" class="social-link">
+                            <img src="tik-tok.png" alt="TikTok">
+                        </a>
+                        <a href="https://shopee.ph/bodycravingsph" target="_blank" class="social-link">
+                            <img src="brand-shopee.922x1024.png" alt="Shopee">
+                        </a>
+                    </div>
+                </div>
+                <!-- Collections Section -->
+                <div class="footer-collections">
+                    <h3 class="collections-heading">Authors</h3>
+                    <div class="collection-links">
+                        <span class="collection-link">Baladiang, Kennedy Fhyle J.</span>
+                        <span class="collection-link">Madenilla, Jasm Andrew S.</span>
+                        <span class="collection-link">Merino, Levi H.</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Footer Bottom -->
+            <div class="footer-bottom">
+                <p class="footer-tagline">Beauty is an attitude. It's the way you walk, the way you talk, and the way you feel about yourself.</p>
+                <div class="footer-divider"></div>
+                <p class="copyright">© 2025 Body Cravings. All rights reserved.</p>
+            </div>
+        
+        <!-- Back to Top Button 
+        <a href="about333.html" class="back-to-top">↑</a> -->
+    </footer>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            // Add smooth scrolling for About link only
+            const aboutLink = document.querySelector('.about-link');
+            const aboutSection = document.querySelector('#about-section');
+
+            aboutLink.addEventListener('click', function(e) {
+                e.preventDefault();
+                aboutSection.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,1103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Body Cravings - Place your order for high-quality, cruelty-free beauty products">
+    <link rel="icon" type="image/png" href="logo2.png">
+    <title>Order Now - Body Cravings</title>
+    <link href="style.css" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #5a4633;
+            --accent-color: #8b5a2b; 
+            --dark-color: #333;
+            --light-color: #f4f4f4;
+            --white: #fff;
+            --black: #000;
+            --transition: all 0.3s ease-in-out;
+            --error-color: #8b0000;
+        }
+        /* Order Section */
+        .order-section {
+            max-width: 100%;
+            margin: 0 auto;
+            padding: 80px 40px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        
+        .order-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .section-title {
+            font-size: 3em;
+            margin-bottom: 20px;
+            position: relative;
+            display: inline-block;
+            color: var(--primary-color);
+            text-align: center;
+            width: 100%;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background-color: var(--accent-color);
+        }
+
+        .section-description {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto 50px;
+            font-size: 1.1em;
+            line-height: 1.8;
+            color: #555;
+        }
+
+        /* New Order Form Styles */
+        .client-info-card {
+            background: rgba(255, 255, 255, 0.8);
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            padding: 40px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .client-info-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        .form-header {
+            border-bottom: 1px solid #333; /* Changed from #8b0000 to dark gray */
+            margin-bottom: 30px;
+            padding-bottom: 10px;
+            color: #333; /* Changed from #8b0000 to dark gray */
+            font-size: 1.5em;
+        }
+
+        .form-row {
+            display: flex;
+            flex-wrap: wrap;
+            margin-bottom: 20px;
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+            flex: 1 0 100%;
+        }
+
+        .form-label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            color: var(--dark-color);
+        }
+
+        .form-input {
+            width: 92%;
+            padding: 12px 15px;
+            border: 1px solid #333; 
+            border-radius: 5px;
+            font-size: 1em;
+            transition: var(--transition);
+        }
+
+        .form-input:focus {
+            border-color: var(--accent-color);
+            outline: none;
+            box-shadow: 0 0 0 2px rgba(139, 90, 43, 0.2);
+        }
+
+        .form-select {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #333; 
+            border-radius: 5px;
+            font-size: 1em;
+            background-color: white;
+            cursor: pointer;
+            appearance: none;
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23333' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+            /* Changed stroke color from %238b0000 to %23333 */
+            background-repeat: no-repeat;
+            background-position: right 15px center;
+            background-size: 15px;
+        }
+
+        .name-inputs {
+            display: flex;
+            gap: 20px;
+            width: 100%;
+        }
+
+        .name-input {
+            flex: 1;
+        }
+
+        .half-width {
+            flex: 0 0 calc(50% - 10px);
+        }
+
+        .proceed-btn {
+            display: block;
+            width: 100%;
+            padding: 15px;
+            margin-top: 30px;
+            background-color: #333; 
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 1.1em;
+            font-weight: 500;
+            cursor: pointer;
+            transition: var(--transition);
+            text-align: center;
+        }
+
+        .proceed-btn:hover {
+            background-color: #000; 
+            transform: translateY(-3px);
+        }
+        
+        .payment-methods {
+            display: flex;
+            margin-top: 35px;
+            gap: 10px;
+        }
+        
+        .payment-icon {
+            width: 35px;
+            height: 20px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 3px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition);
+        }
+        
+        .payment-icon:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+        
+        .form-tabs {
+            display: flex;
+            margin-bottom: 30px;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .tab-btn {
+            padding: 12px 25px;
+            background: none;
+            border: none;
+            border-bottom: 3px solid transparent;
+            font-size: 16px;
+            font-weight: 500;
+            color: #666;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .tab-btn.active {
+            color: var(--accent-color);
+            border-bottom-color: var(--accent-color);
+        }
+
+        /* Cart Styling */
+        .shopping-cart {
+            margin-top: 40px;
+            padding: 25px;
+            border-radius: 10px;
+            background-color: rgba(249, 240, 239, 0.5);
+        }
+
+        .cart-header {
+            font-size: 1.3em;
+            margin-bottom: 20px;
+            color: var(--primary-color);
+            border-bottom: 1px solid #ddd;
+            padding-bottom: 10px;
+        }
+
+        .empty-cart-message {
+            text-align: center;
+            color: #777;
+            font-style: italic;
+            padding: 20px 0;
+        }
+
+        .cart-items {
+            max-height: 300px;
+            overflow-y: auto;
+        }
+
+        .cart-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px;
+            margin-bottom: 10px;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        }
+
+        .item-details {
+            flex: 1;
+            display: flex;
+            align-items: center;
+        }
+
+        .brand-name {
+            font-weight: 500;
+            color: #777;
+            margin-right: 10px;
+        }
+
+        .product-name {
+            font-weight: 600;
+        }
+
+        .item-quantity {
+            margin-left: auto;
+            display: flex;
+            align-items: center;
+        }
+
+        .quantity-btn {
+            width: 25px;
+            height: 25px;
+            border: 1px solid #ddd;
+            background: white;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.2s ease;
+        }
+
+        .quantity-btn:hover {
+            background-color: #f5f5f5;
+        }
+
+        .item-quantity span {
+            margin: 0 10px;
+            min-width: 20px;
+            text-align: center;
+        }
+
+        .remove-btn {
+            background: none;
+            border: none;
+            color: #999;
+            font-size: 20px;
+            cursor: pointer;
+            padding: 0 10px;
+            transition: color 0.2s ease;
+        }
+
+        .remove-btn:hover {
+            color: #ff0000;
+        }
+
+        .cart-summary {
+            display: flex;
+            justify-content: space-between;
+            padding: 15px 0;
+            margin-top: 20px;
+            border-top: 1px dashed #ddd;
+        }
+
+        .cart-total {
+            font-weight: 500;
+        }
+
+        /* Back to Products button */
+        .back-btn {
+            display: block;
+            width: 100%;
+            padding: 15px;
+            margin-top: 30px;
+            background-color: #fff;
+            color: #333;
+            border: 1px solid #333;
+            border-radius: 5px;
+            font-size: 1.1em;
+            font-weight: 500;
+            cursor: pointer;
+            transition: var(--transition);
+            text-align: center;
+        }
+
+        .back-btn:hover {
+            background-color: #f5f5f5;
+        }
+
+        /* Add to Cart button */
+        .add-btn {
+            display: block;
+            width: 100%;
+            padding: 12px 15px;
+            background-color: var(--accent-color);
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 1em;
+            font-weight: 500;
+            cursor: pointer;
+            transition: var(--transition);
+            text-align: center;
+        }
+
+        .add-btn:hover {
+            background-color: #6d4425;
+            transform: translateY(-2px);
+        }
+
+        /* Order Summary */
+        .order-summary {
+            margin-top: 30px;
+            padding: 20px;
+            background-color: rgba(249, 240, 239, 0.5);
+            border-radius: 10px;
+            margin-bottom: 30px;
+        }
+
+        .order-summary h4 {
+            font-size: 1.2em;
+            margin-bottom: 15px;
+            color: var(--primary-color);
+            border-bottom: 1px solid #ddd;
+            padding-bottom: 10px;
+        }
+
+        .summary-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 10px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .summary-item:last-child {
+            border-bottom: none;
+        }
+
+        .summary-product {
+            font-weight: 500;
+        }
+
+        .summary-quantity {
+            color: #666;
+        }
+
+        @media (max-width: 1024px) {
+        .order-section {
+            padding: 60px 30px;
+        }
+
+        .section-title {
+            font-size: 2.5em;
+        }
+
+        .section-description {
+            font-size: 1em;
+        }
+
+        .client-info-card {
+            padding: 30px;
+        }
+
+        .form-input,
+        .form-select {
+            padding: 10px;
+        }
+
+        .proceed-btn {
+            padding: 12px;
+            font-size: 1em;
+        }
+    }
+
+    @media (max-width: 768px) {
+        .order-section {
+            padding: 50px 20px;
+        }
+
+        .section-title {
+            font-size: 2em;
+        }
+
+        .section-description {
+            font-size: 0.95em;
+        }
+
+        .client-info-card {
+            padding: 25px;
+        }
+
+        .form-row {
+            flex-direction: column;
+        }
+
+        .name-inputs {
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .half-width {
+            flex: 1 0 100%;
+        }
+
+        .form-input,
+        .form-select {
+            width: 100%;
+        }
+
+        .proceed-btn {
+            font-size: 0.95em;
+            padding: 10px;
+        }
+
+        .cart-item {
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 10px;
+        }
+
+        .item-quantity {
+            margin-left: 0;
+            width: 100%;
+            justify-content: space-between;
+        }
+    }
+
+    @media (max-width: 480px) {
+        .order-section {
+            padding: 40px 15px;
+        }
+
+        .section-title {
+            font-size: 1.8em;
+        }
+
+        .section-description {
+            font-size: 0.9em;
+        }
+
+        .client-info-card {
+            padding: 20px;
+        }
+
+        .form-header {
+            font-size: 1.3em;
+        }
+
+        .form-input,
+        .form-select {
+            padding: 8px;
+            font-size: 0.9em;
+        }
+
+        .tab-btn {
+            font-size: 14px;
+            padding: 10px 15px;
+        }
+
+        .cart-header {
+            font-size: 1.1em;
+        }
+
+        .cart-item {
+            padding: 10px;
+        }
+
+        .quantity-btn {
+            width: 20px;
+            height: 20px;
+            font-size: 14px;
+        }
+
+        .proceed-btn,
+        .back-btn,
+        .add-btn {
+            font-size: 0.9em;
+            padding: 10px;
+        }
+    }
+    </style>
+</head>
+
+<body>
+    <nav id="navbar">
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li class="dropdown">
+                <a href="#collection" class="dropbtn">Collections</a>
+                <ul class="dropdown-content">
+                    <li><a href="herskinstore.html">HerSkin</a></li>
+                    <li><a href="adornstore.html">Adorn</a></li>
+                    <li><a href="fairyskinstore.html">FairySkin</a></li>
+                </ul>
+            </li>
+            <li><a href="store.html">Store</a></li>
+            <li><a href="reviews.html">Reviews</a></li>
+            <li><a href="#">Order Now</a></li>
+            <li><a href="about.html">About</a></li>
+        </ul>
+        <div class="logo">
+            <a href="index.html">
+                <img src="logo4.png" alt="Logo">
+            </a>
+        </div>
+    </nav>
+
+    <!-- Order Section -->
+    <section class="order-section">
+        <div class="accent-shape shape-1"></div>
+        <div class="accent-shape shape-2"></div>
+        <div class="accent-shape shape-3"></div>
+        
+        <div class="order-inner">
+            <h2 class="section-title">Order Now</h2>
+            <p class="section-description">Place your order for our cruelty-free beauty products in just a few simple steps.</p>
+            
+            <!-- New Client Information Form -->
+            <div class="client-info-card">
+                <div class="form-tabs">
+                    <button class="tab-btn active" data-tab="products-tab">Select Products</button>
+                    <button class="tab-btn" data-tab="info-tab">Your Information</button>
+                </div>
+                
+                <div class="tab-content" id="products-tab">
+                    <h3 class="form-header">Select Your Products</h3>
+                    
+                    <div class="product-selection-form">
+                        <!-- Product Selection -->
+                        <div class="form-row">
+                            <div class="form-group half-width">
+                                <label class="form-label">Brand</label>
+                                <select id="brand-select" class="form-select" required>
+                                    <option value="" selected disabled>Select a brand</option>
+                                    <option value="adorn">Adorn</option>
+                                    <option value="fairyskin">FairySkin</option>
+                                    <option value="herskin">HerSkin</option>
+                                </select>
+                            </div>
+                            
+                            <div class="form-group half-width">
+                                <label class="form-label">Product</label>
+                                <select id="product-select" class="form-select" disabled>
+                                    <option value="" selected disabled>Please select a brand first</option>
+                                </select>
+                            </div>
+                        </div>
+                        
+                        <div class="form-row">
+                            <div class="form-group half-width">
+                                <label class="form-label">Quantity</label>
+                                <input type="number" id="product-quantity" class="form-input" min="1" max="99" value="1">
+                            </div>
+                            
+                            <div class="form-group half-width">
+                                <label class="form-label">&nbsp;</label>
+                                <button type="button" id="add-to-cart-btn" class="add-btn">Add to Cart</button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Shopping Cart -->
+                    <div class="shopping-cart">
+                        <h3 class="cart-header">Your Cart</h3>
+                        <div id="cart-items" class="cart-items">
+                            <p class="empty-cart-message">Your cart is empty. Add some products!</p>
+                        </div>
+                        
+                        <div class="cart-summary">
+                            <div class="cart-total">
+                                <span>Total Items:</span>
+                                <span id="total-items">0</span>
+                            </div>
+                        </div>
+                        
+                        <button type="button" id="proceed-to-info-btn" class="proceed-btn" disabled>Proceed to Customer Information</button>
+                    </div>
+                </div>
+                
+                <div class="tab-content" id="info-tab" style="display: none;">
+                    <h3 class="form-header">Your Information</h3>
+                    
+                    <form id="checkout-form">
+                        <!-- Full Name Section -->
+                        <div class="form-group">
+                            <label class="form-label">Full Name</label>
+                            <div class="name-inputs">
+                                <div class="name-input">
+                                    <input type="text" class="form-input" placeholder="First name" required>
+                                </div>
+                                <div class="name-input">
+                                    <input type="text" class="form-input" placeholder="Last name" required>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Contact Information -->
+                        <div class="form-row">
+                            <div class="form-group half-width">
+                                <label class="form-label">Email</label>
+                                <input type="email" class="form-input" placeholder="your.email@example.com" required>
+                            </div>
+                            
+                            <div class="form-group half-width">
+                                <label class="form-label">Phone Number</label>
+                                <input type="tel" class="form-input" placeholder="Your phone number" required>
+                            </div>
+                        </div>
+                        
+                        <!-- Shipping Address -->
+                        <div class="form-group">
+                            <label class="form-label">Shipping Address</label>
+                            <input type="text" class="form-input" placeholder="Street Address" required>
+                        </div>
+                        
+                        <div class="form-row">
+                            <div class="form-group half-width">
+                                <input type="text" class="form-input" placeholder="City" required>
+                            </div>
+                            
+                            <div class="form-group half-width">
+                                <input type="text" class="form-input" placeholder="Postal/Zip Code" required>
+                            </div>
+                        </div>
+                        
+                        <!-- Skin Type -->
+                        <div class="form-group">
+                            <label class="form-label">Skin Type</label>
+                            <select class="form-select">
+                                <option value="" selected disabled>Select your skin type</option>
+                                <option value="normal">Normal</option>
+                                <option value="dry">Dry</option>
+                                <option value="oily">Oily</option>
+                                <option value="combination">Combination</option>
+                                <option value="sensitive">Sensitive</option>
+                            </select>
+                        </div>
+                        
+                        <!-- Payment Method -->
+                        <div class="form-group">
+                            <label class="form-label">Payment Method</label>
+                            <select class="form-select" required>
+                                <option value="gcash" selected>GCash</option>
+                                <option value="paypal">PayPal</option>
+                                <option value="bank">Bank Transfer</option>
+                                <option value="cod">Cash on Delivery</option>
+                            </select>
+                        </div>
+                        
+                        <!-- Special Instructions -->
+                        <div class="form-group">
+                            <label class="form-label">Special Instructions (Optional)</label>   
+                            <textarea class="form-input" placeholder="Any specific instructions for your order" rows="3"></textarea>
+                        </div>
+                        
+                        <!-- Newsletter Subscription -->
+                        <div class="form-group">
+                            <label class="form-checkbox">
+                                <input type="checkbox" checked>
+                                <span>Subscribe to receive updates on new products and exclusive offers</span>
+                            </label>
+                        </div>
+                        
+                        <!-- Order Summary -->
+                        <div class="order-summary">
+                            <h4>Order Summary</h4>
+                            <div id="summary-items" class="summary-items"></div>
+                        </div>
+                        
+                        <!-- Back to Products and Complete Order Buttons -->
+                        <div class="form-row">
+                            <div class="form-group half-width">
+                                <button type="button" id="back-to-products-btn" class="back-btn">Back to Products</button>
+                            </div>
+                            <div class="form-group half-width">
+                                <button type="submit" class="proceed-btn">Complete Your Order</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <footer>
+        <div class="footer-wrapper">
+            <div class="footer-top">
+                <!-- Contact Section -->
+                <div class="footer-contact">
+                    <h3 class="contact-heading">Contact</h3>
+                    <p class="contact-info">Address: Taal Bocaue Bakery infront of San pedro de Alcantara Church</p>
+                    <p class="contact-info">E-mail: <a href="oninestradalegaspi@gmail.com">oninestradalegaspi@gmail.com</a></p>
+                    <p class="contact-info">Phone: +0997 278 9498</p>
+                </div>
+                    
+                <!-- Brand Section -->
+                <div class="footer-brand">
+                    <h2 class="footer-logo">Body Cravings</h2>
+                    <p class="brand-tagline">An oasis of online beauty built specifically so your new site can take everyone's breaths away.</p>
+                    
+                    <div class="social-icons">
+                        <a href="https://www.facebook.com/herskinauthoriseddistributor/" target="_blank" class="social-link">
+                            <img src="facebook.png" alt="Facebook">
+                        </a>
+                        <a href="https://www.instagram.com/glamdoseph_/" target="_blank" class="social-link">
+                            <img src="instagram.png" alt="Instagram">
+                        </a>
+                        <a href="https://www.tiktok.com/@herskinph" target="_blank" class="social-link">
+                            <img src="tik-tok.png" alt="TikTok">
+                        </a>
+                        <a href="https://shopee.ph/bodycravingsph" target="_blank" class="social-link">
+                            <img src="brand-shopee.922x1024.png" alt="Shopee">
+                        </a>
+                    </div>
+                </div>
+                <!-- Collections Section -->
+                <div class="footer-collections">
+                    <h3 class="collections-heading">Authors</h3>
+                    <div class="collection-links">
+                        <span class="collection-link">Baladiang, Kennedy Fhyle J.</span>
+                        <span class="collection-link">Madenilla, Jasm Andrew S.</span>
+                        <span class="collection-link">Merino, Levi H.</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Footer Bottom -->
+            <div class="footer-bottom">
+                <p class="footer-tagline">Beauty is an attitude. It's the way you walk, the way you talk, and the way you feel about yourself.</p>
+                <div class="footer-divider"></div>
+                <p class="copyright">© 2025 Body Cravings. All rights reserved.</p>
+            </div>
+        
+        <!-- Back to Top Button 
+        <a href="about333.html" class="back-to-top">↑</a> -->
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const header = document.querySelector('header');
+            const brandSelect = document.getElementById('brand-select');
+            const productSelect = document.getElementById('product-select');
+            const productQuantity = document.getElementById('product-quantity');
+            const addToCartBtn = document.getElementById('add-to-cart-btn');
+            const cartItems = document.getElementById('cart-items');
+            const totalItemsElement = document.getElementById('total-items');
+            const proceedToInfoBtn = document.getElementById('proceed-to-info-btn');
+            const backToProductsBtn = document.getElementById('back-to-products-btn');
+            const summaryItems = document.getElementById('summary-items');
+            const tabBtns = document.querySelectorAll('.tab-btn');
+            const tabContents = document.querySelectorAll('.tab-content');
+            const checkoutForm = document.getElementById('checkout-form');
+            const emptyCartMessage = document.querySelector('.empty-cart-message');
+            
+            // Scroll event for header
+            window.addEventListener('scroll', function() {
+                if (window.scrollY > 50) {
+                    header.classList.add('scrolled');
+                } else {
+                    header.classList.remove('scrolled');
+                }
+            });
+            
+            // Product data
+            const productsByBrand = {
+                adorn: [
+                    "Whipped Scrub",
+                    "Chimchaghan Soap",
+                    "Whitening Body Lotion",
+                    "Tinted Premium Sunscreen",
+                    "Premium Sunmist",
+                    "Premium Sunscreen",
+                    "Premium Tinted Sunscreen",
+                    "Toner Serum"
+                ],
+                fairyskin: [
+                    "Premium Brightening Sunscreen",
+                    "Premium Tinted Sunscreen",
+                    "Mild Facial Kit",
+                    "Derma Facial Set",
+                    "Mild Facial Set",
+                    "Wild Facial Set",
+                    "Premium Facial Set",
+                    "Milky Bar Soap",
+                    "Premium Brightening Kit"
+                ],
+                herskin: [
+                    "Maintenance Set",
+                    "Sun Defense Set SPF 45",
+                    "Secret Glow Tone Up Cream SPF 30",
+                    "Sun Defense SPF 30",
+                    "Double Brightening Body Lotion",
+                    "Revita Glow Skin Rescue",
+                    "Sun Defense SPF 45"
+                ]
+            };
+            
+            // Cart data structure
+            let cart = [];
+            let totalItems = 0;
+            
+            // Update product dropdown when brand is selected
+            brandSelect.addEventListener('change', function() {
+                const selectedBrand = this.value;
+                
+                // Clear the product dropdown
+                productSelect.innerHTML = '';
+                
+                // Add default option
+                const defaultOption = document.createElement('option');
+                defaultOption.value = '';
+                defaultOption.disabled = true;
+                defaultOption.selected = true;
+                defaultOption.textContent = 'Select a product';
+                productSelect.appendChild(defaultOption);
+                
+                // Populate products based on selected brand
+                if (selectedBrand in productsByBrand) {
+                    productsByBrand[selectedBrand].forEach(product => {
+                        const option = document.createElement('option');
+                        option.value = product.toLowerCase().replace(/\s+/g, '-');
+                        option.textContent = product;
+                        productSelect.appendChild(option);
+                    });
+                    
+                    // Enable product selection
+                    productSelect.disabled = false;
+                } else {
+                    // Disable product selection if no brand selected
+                    productSelect.disabled = true;
+                }
+            });
+            
+            // Add to cart functionality
+            addToCartBtn.addEventListener('click', function() {
+                const selectedBrand = brandSelect.value;
+                const selectedProductIndex = productSelect.selectedIndex;
+                
+                if (selectedBrand && selectedProductIndex > 0) {
+                    const selectedProductText = productSelect.options[selectedProductIndex].text;
+                    const quantity = parseInt(productQuantity.value);
+                    
+                    // Check if product already exists in cart
+                    const existingItemIndex = cart.findIndex(item => 
+                        item.brand === selectedBrand && item.product === selectedProductText);
+                    
+                    if (existingItemIndex !== -1) {
+                        // Update quantity if product already in cart
+                        cart[existingItemIndex].quantity += quantity;
+                    } else {
+                        // Add new product to cart
+                        cart.push({
+                            brand: selectedBrand,
+                            product: selectedProductText,
+                            quantity: quantity,
+                            id: Date.now() // Unique ID for each item
+                        });
+                    }
+                    
+                    // Update cart display
+                    updateCartDisplay();
+                    
+                    // Reset product selection
+                    productSelect.selectedIndex = 0;
+                    productQuantity.value = 1;
+                } else {
+                    alert('Please select a brand and a product');
+                }
+            });
+            
+            // Update cart display
+            function updateCartDisplay() {
+                // Clear cart display
+                if (cart.length === 0) {
+                    emptyCartMessage.style.display = 'block';
+                    proceedToInfoBtn.disabled = true;
+                } else {
+                    emptyCartMessage.style.display = 'none';
+                    proceedToInfoBtn.disabled = false;
+                    
+                    // Calculate total items
+                    totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+                    totalItemsElement.textContent = totalItems;
+                    
+                    // Update cart items display
+                    cartItems.innerHTML = '';
+                    
+                    cart.forEach(item => {
+                        const cartItem = document.createElement('div');
+                        cartItem.className = 'cart-item';
+                        cartItem.innerHTML = `
+                            <div class="item-details">
+                                <div class="brand-name">${capitalizeFirstLetter(item.brand)}</div>
+                                <div class="product-name">${item.product}</div>
+                                <div class="item-quantity">
+                                    <button class="quantity-btn decrease" data-id="${item.id}">-</button>
+                                    <span>${item.quantity}</span>
+                                    <button class="quantity-btn increase" data-id="${item.id}">+</button>
+                                </div>
+                            </div>
+                            <button class="remove-btn" data-id="${item.id}">×</button>
+                        `;
+                        cartItems.appendChild(cartItem);
+                    });
+                    
+                    // Add event listeners for remove buttons
+                    document.querySelectorAll('.remove-btn').forEach(button => {
+                        button.addEventListener('click', function() {
+                            const itemId = parseInt(this.getAttribute('data-id'));
+                            removeFromCart(itemId);
+                        });
+                    });
+                    
+                    // Add event listeners for quantity buttons
+                    document.querySelectorAll('.quantity-btn.decrease').forEach(button => {
+                        button.addEventListener('click', function() {
+                            const itemId = parseInt(this.getAttribute('data-id'));
+                            updateCartItemQuantity(itemId, -1);
+                        });
+                    });
+                    
+                    document.querySelectorAll('.quantity-btn.increase').forEach(button => {
+                        button.addEventListener('click', function() {
+                            const itemId = parseInt(this.getAttribute('data-id'));
+                            updateCartItemQuantity(itemId, 1);
+                        });
+                    });
+                }
+                
+                // Update order summary
+                updateOrderSummary();
+            }
+            
+            // Update cart item quantity
+            function updateCartItemQuantity(itemId, change) {
+                const itemIndex = cart.findIndex(item => item.id === itemId);
+                
+                if (itemIndex !== -1) {
+                    cart[itemIndex].quantity += change;
+                    
+                    // Remove item if quantity is 0 or less
+                    if (cart[itemIndex].quantity <= 0) {
+                        removeFromCart(itemId);
+                    } else {
+                        updateCartDisplay();
+                    }
+                }
+            }
+            
+            // Remove item from cart
+            function removeFromCart(itemId) {
+                cart = cart.filter(item => item.id !== itemId);
+                updateCartDisplay();
+            }
+            
+            // Update order summary
+            function updateOrderSummary() {
+                summaryItems.innerHTML = '';
+                
+                if (cart.length > 0) {
+                    cart.forEach(item => {
+                        const summaryItem = document.createElement('div');
+                        summaryItem.className = 'summary-item';
+                        summaryItem.innerHTML = `
+                            <div class="summary-product">${item.product} (${capitalizeFirstLetter(item.brand)})</div>
+                            <div class="summary-quantity">x${item.quantity}</div>
+                        `;
+                        summaryItems.appendChild(summaryItem);
+                    });
+                } else {
+                    summaryItems.innerHTML = '<p>No items in your cart</p>';
+                }
+            }
+            
+            // Tab switching functionality
+            tabBtns.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const tabId = this.getAttribute('data-tab');
+                    
+                    // Update active tab button
+                    tabBtns.forEach(btn => btn.classList.remove('active'));
+                    this.classList.add('active');
+                    
+                    // Show selected tab content
+                    tabContents.forEach(content => {
+                        content.style.display = 'none';
+                    });
+                    document.getElementById(tabId).style.display = 'block';
+                });
+            });
+            
+            // Proceed to information tab
+            proceedToInfoBtn.addEventListener('click', function() {
+                document.querySelector('[data-tab="info-tab"]').click();
+            });
+            
+            // Back to products tab
+            backToProductsBtn.addEventListener('click', function() {
+                document.querySelector('[data-tab="products-tab"]').click();
+            });
+            
+            // Form submission
+            checkoutForm.addEventListener('submit', function(event) {
+                event.preventDefault();
+                
+                if (cart.length === 0) {
+                    alert('Your cart is empty. Please add products before completing your order.');
+                    return;
+                }
+                
+                console.log('Order submitted', {
+                    customer: {
+                        firstName: this.querySelector('input[placeholder="First name"]').value,
+                        lastName: this.querySelector('input[placeholder="Last name"]').value,
+                        email: this.querySelector('input[type="email"]').value,
+                        phone: this.querySelector('input[type="tel"]').value
+                    },
+                    items: cart
+                });
+                
+                alert('Order submitted successfully!');
+                
+                // Reset cart and form
+                cart = [];
+                updateCartDisplay();
+                this.reset();
+                
+                // Go back to products tab
+                document.querySelector('[data-tab="products-tab"]').click();
+            });
+            
+            // Helper function to capitalize first letter
+            function capitalizeFirstLetter(string) {
+                return string.charAt(0).toUpperCase() + string.slice(1);
+            }
+        });
+    </script>
+</body>
+</html>
