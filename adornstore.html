@@ -281,6 +281,284 @@
   }
 }
 
+/* New Changes start here ------------------------------- */
+
+/* Current media queries */
+/* For tablets (width 1024px and below) */
+@media screen and (max-width: 1024px) {
+    .slider-container {
+        width: 90%;
+    }
+
+    .slide,
+    .slide img {
+        width: 100%;
+        height: auto;
+        min-width: unset; /* Remove fixed width constraint */
+    }
+
+    .prev, .next {
+        width: 35px;
+        height: 35px;
+        font-size: 14px;
+    }
+
+    .best-seller-slider {
+        gap: 30px;
+    }
+
+    .categories-container {
+        gap: 50px;
+        flex-wrap: wrap;
+    }
+
+    .category img {
+        width: 400px;
+        height: 320px;
+    }
+}
+
+/* For mobile devices (width 768px and below) */
+@media screen and (max-width: 768px) {
+    .slider-container {
+        width: 95%;
+        margin-top: 30px;
+        border-radius: 12px;
+    }
+
+    .slide {
+        min-width: 100%; /* Override the fixed 1200px width */
+    }
+    
+    .slide img {
+        width: 100%;
+        height: auto;
+        min-height: 250px; /* Set minimum height for consistency */
+        object-fit: cover; /* Maintain aspect ratio while covering area */
+    }
+
+    .prev, .next {
+        width: 30px;
+        height: 30px;
+        font-size: 12px;
+        padding: 5px;
+    }
+
+    .indicators {
+        bottom: 8px;
+    }
+
+    .indicator {
+        width: 18px;
+        height: 4px;
+    }
+
+    .best-seller-wrapper {
+        width: 100%;
+        padding: 0 20px;
+    }
+
+    .best-seller-slider {
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .best-seller-slider .product {
+        width: calc(50% - 20px); /* Two products per row minus gap */
+        max-width: 240px;
+    }
+
+    .categories-container {
+        flex-direction: column;
+        align-items: center;
+        gap: 30px;
+    }
+
+    .category img {
+        width: 320px;
+        height: 260px;
+    }
+
+    .standout-container {
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+    }
+
+    .standout-box {
+        width: 90%;
+        max-width: 350px;
+    }
+}
+
+/* For extra small devices (width 480px and below) */
+@media screen and (max-width: 480px) {
+    .slider-container {
+        width: 92%;
+        border-radius: 10px;
+        margin-top: 20px;
+        box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.15);
+    }
+
+    .slide img {
+        min-height: 180px; /* Smaller minimum height for very small screens */
+    }
+
+    .prev, .next {
+        width: 25px;
+        height: 25px;
+        font-size: 10px;
+        padding: 5px;
+    }
+
+    .indicator {
+        width: 12px;
+        height: 3px;
+    }
+
+    .best-seller-slider .product {
+        width: 100%; /* Full width for smallest screens */
+        max-width: 280px;
+    }
+
+    .category img {
+        width: 280px;
+        height: auto;
+        max-width: 92%;
+    }
+
+    .standout-box {
+        width: 92%;
+        max-width: 280px;
+        padding: 15px;
+    }
+}
+
+/* NEW: Add extra small mobile devices (width 375px and below) */
+@media screen and (max-width: 375px) {
+    .slider-container {
+        width: 94%;
+        margin-top: 15px;
+        border-radius: 8px;
+    }
+    
+    .slide img {
+        min-height: 160px;
+    }
+    
+    .prev, .next {
+        width: 22px;
+        height: 22px;
+        font-size: 8px;
+    }
+    
+    .indicators {
+        bottom: 5px;
+    }
+    
+    .indicator {
+        width: 10px;
+        height: 2px;
+        margin: 0 2px;
+    }
+    
+    .best-seller-slider .product {
+        max-width: 240px;
+    }
+    
+    .product-name {
+        font-size: 12px;
+    }
+    
+    .category img {
+        width: 240px;
+    }
+    
+    #best-sellers h2,
+    .product-categories h2,
+    .standout h2 {
+        font-size: 22px;
+    }
+    
+    .standout-box h3 {
+        font-size: 16px;
+    }
+    
+    .standout-box p {
+        font-size: 12px;
+    }
+}
+
+/* NEW: Add tiny devices (width 320px and below) */
+@media screen and (max-width: 320px) {
+    .slider-container {
+        width: 96%;
+        margin-top: 10px;
+        box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.15);
+    }
+    
+    .slide img {
+        min-height: 140px;
+    }
+    
+    .prev, .next {
+        width: 20px;
+        height: 20px;
+        font-size: 8px;
+    }
+    
+    .indicators {
+        bottom: 3px;
+    }
+    
+    .indicator {
+        width: 8px;
+        height: 2px;
+        margin: 0 1px;
+    }
+    
+    .best-seller-slider .product {
+        max-width: 200px;
+    }
+    
+    .category img {
+        width: 220px;
+    }
+    
+    #navbar ul li a {
+        padding: 5px;
+        font-size: 12px;
+    }
+    
+    .logo img {
+        max-height: 35px;
+    }
+    
+    .standout {
+        padding: 30px 10px;
+    }
+    
+    .standout-box {
+        padding: 12px;
+    }
+}
+
+/* NEW: Fix the slider JS functionality for mobile */
+@media screen and (max-width: 1024px) {
+    .slider {
+        width: 100%;
+        display: flex;
+        transition: transform 0.8s ease-in-out;
+    }
+    
+    .slide {
+        width: 100%; /* Full width slides */
+        min-width: 100%; /* Override the fixed width */
+        flex-shrink: 0; /* Prevent slides from shrinking */
+    }
+}
+
 </style>
 
 <body>
