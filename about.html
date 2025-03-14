@@ -776,6 +776,72 @@
     }
 }
 
+/* New Changes Part 2
+
+/* Add these media queries for responsive navigation */
+@media screen and (max-width: 768px) {
+    #navbar {
+        flex-direction: column;
+        align-items: center;
+        padding: 10px 0;
+    }
+    
+    #navbar ul {
+        flex-direction: column;
+        width: 100%;
+        text-align: center;
+        margin-bottom: 15px;
+    }
+    
+    #navbar ul li {
+        margin: 5px 0;
+        width: 100%;
+    }
+    
+    .dropdown-content {
+        position: static;
+        width: 100%;
+        box-shadow: none;
+        display: none;
+    }
+    
+    .dropdown:hover .dropdown-content {
+        display: block;
+    }
+    
+    .logo {
+        margin: 10px 0;
+    }
+}
+
+/* For even smaller screens */
+@media screen and (max-width: 480px) {
+    #navbar {
+        padding: 5px 0;
+    }
+    
+    #navbar ul li a {
+        padding: 8px 12px;
+        font-size: 14px;
+    }
+    
+    .logo img {
+        max-height: 40px;
+    }
+}
+
+/* For tiny screens */
+@media screen and (max-width: 320px) {
+    #navbar ul li a {
+        padding: 6px 10px;
+        font-size: 12px;
+    }
+    
+    .logo img {
+        max-height: 35px;
+    }
+}
+
 /* NEW: Fix the slider JS functionality for mobile */
 @media screen and (max-width: 1024px) {
     .slider {
